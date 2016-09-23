@@ -5,20 +5,8 @@ import java.util.*;
 
 public class StylistTest {
 
-  @Before
-  public void setUp() {
-    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", null, null);
-  }
-
-  @After
-  public void tearDown() {
-    try (Connection con = DB.sql2o.open()) {
-      String deleteClientsQuery = "DELETE FROM clients *;";
-      String deleteStylistsQuery = "DELETE FROM stylists *;";
-      con.createQuery(deleteClientsQuery).executeUpdate();
-      con.createQuery(deleteStylistsQuery).executeUpdate();
-      }
-    }
+  @Rule
+    public DatabaseRule database = new DatabaseRule();
 
   @Test
   public void stylist_instantiatesCorrectly_true() {
@@ -39,11 +27,37 @@ public class StylistTest {
   @Test
   public void stylist_returnsSpecialty_true() {
     Stylist stylist = new Stylist("Sarah", 34, "touch-up work", 4);
-    assertEquals("touch-up work", stylist.getSpeciality());
+    assertEquals("touch-up work", stylist.getSpecialty());
   }
   @Test
   public void stylist_returnsExperience_true() {
     Stylist stylist = new Stylist("Sarah", 34, "touch-up work", 4);
     assertEquals(4, stylist.getExperience());
   }
+
+  @Test
+  public void equals_returnsTrueIfAttributesAreTheSame_true() {
+    Stylist stylist = new Stylist("Sarah", 34, "touch-up work", 4);
+    Stylist stylist2 = new Stylist("Sarah", 34, "touch-up work", 4);
+    assertTrue(stylist.equals(stylist2));
+   }
+
+   @Test
+   public void equals_FalseIfAttributesAreDifferent_false() {
+     Stylist stylist = new Stylist("Sarah", 34, "touch-up work", 4);
+     Stylist stylist2 = new Stylist("Sophie", 34, "touch-up work", 4);
+     assertTrue(stylist.equals(stylist2));
+   }
+
+
+
+
+
+
+  // @Test
+  // public void save_savesStylistoDataBase_true() {
+  //   Stylist newStylist = new Stylist("Sarah", 34, "touch-up work", 4);
+  //   newStylist.save();
+  //   assertEquals(true, Stylist.all().get(0).equals(newStylist));
+  // }
 }

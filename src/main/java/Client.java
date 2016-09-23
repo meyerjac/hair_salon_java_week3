@@ -37,13 +37,15 @@ public class Client {
     return salonId;
   }
 
-  public void save() {
-    try(connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO clients(name, age, phone_number, haircut) VALUES (:name, :type, :delivery, :phone_number)"
-      this.id = (int) con,createQuery(sql, true)
-        .addParameter("name", this.name)
-        .addParameter("age", this.age)
-        .addParameter("haircut", this.hi)
-    }
+  // public void save() {
+  //   try(connection con = DB.sql2o.open()) {
+  //     String sql = "INSERT INTO clients(name, age, phone_number, haircut) VALUES (:name, :age, :haircut, :phone_number)"
+  //     this.id = (int) con,createQuery(sql, true)
+  //       .addParameter("name", this.name)
+  //       .addParameter("age", this.age)
+  //       .addParameter("haircut", this.haircut)
+  //       .addParameter("phone_number", this.phone_number)
+  //       .executeUpdate()
+  //       .getKey();
+  //   }
   }
-}
