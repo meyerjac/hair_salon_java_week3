@@ -33,31 +33,62 @@ public class Stylist {
     return experience;
   }
 
+  @Override
+  public boolean equals(Object myStylist) {
+    if(!(myStylist instanceof Stylist)){
+      return false;
+      } else {
+      Stylist stylist = (Stylist) myStylist;
+      return this.getName().equals(stylist.getName())&&
+             this.getAge()==(stylist.getAge())&&
+             this.getSpecialty().equals(stylist.getSpecialty())&&
+             this.getExperience()==(stylist.getExperience())&&
+             this.getId() == stylist.getId();
 
-
-
-
-
+    }
+  }
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO stylists (name, age, specialty, experience) VALUES (:name, :age, :specialty, :experience)";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("name", this.name)
-        .addParameter("age", this.age)
-        .addParameter("specialty", this.specialty)
-        .addParameter("experience", this.experience)
-        .executeUpdate()
-        .getKey();
+      .addParameter("name", this.name)
+      .addParameter("age", this.age)
+      .addParameter("specialty", this.specialty)
+      .addParameter("experience", this.experience)
+      .executeUpdate()
+      .getKey();
     }
   }
-
   public static List<Stylist> all() {
     String sql = "SELECT * FROM stylists";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Stylist.class);
     }
   }
+  public static Stylist find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM stylist where id=:id";
+      Stylist stylist = con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Stylist.class);
+      return stylist;
+    }
+  }
+  // public List<Client> getClients() {
+  //   try(Connection con = DB.sql2o.open()) {
+  //     String sql = "SELECT * FROM clients WHERE stylistId=:id";
+  //     con.createQuery(sql)
+  //     .addParameter("id", id)
+  //     .executeAndFetch(Client.class);
+  //   }
+  // }
 
-
-
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE * FROM stylists WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
 }
