@@ -8,7 +8,7 @@ public class Client {
   private int age;
   private String haircut;
   private int salonId;
-  
+
   public Client(String name, int age, String haircut) {
     this.name = name;
     this.age = age;

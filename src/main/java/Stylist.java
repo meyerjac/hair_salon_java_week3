@@ -81,7 +81,6 @@ public class Stylist {
       .addParameter("id", id)
       .executeAndFetch(Client.class);
     }
-
   }
 
   public void delete() {
