@@ -38,23 +38,23 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/stylist/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
+      model.put("stylist", stylist);
+      model.put("clients", stylist.getClients());
+      model.put("template", "templates/stylist-summary.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
   }
 }
 
 
-//     get("/restaurant/:id", (request, response) -> {
+
+//     get("/stylist/:id/add-review", (request, response) -> {
 //       Map<String, Object> model = new HashMap<String, Object>();
-//       Restaurant restaurant = Restaurant.find(Integer.parseInt(request.params(":id")));
-//       model.put("restaurant", restaurant);
-//       model.put("reviews", restaurant.getReviews());
-//       model.put("template", "templates/restaurant-reviews.vtl");
-//       return new ModelAndView(model, layout);
-//     }, new VelocityTemplateEngine());
-//
-//     get("/restaurant/:id/add-review", (request, response) -> {
-//       Map<String, Object> model = new HashMap<String, Object>();
-//       Restaurant restaurant = Restaurant.find(Integer.parseInt(request.params(":id")));
+//       Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
 //       model.put("restaurant", restaurant);
 //       model.put("template", "templates/add-review.vtl");
 //       return new ModelAndView(model, layout);
@@ -62,16 +62,16 @@ public class App {
 //
 //     post("restaurant/:id/delete", (request, response) -> {
 //       Map<String, Object> model = new HashMap<String, Object>();
-//       Restaurant restaurant = Restaurant.find(Integer.parseInt(request.params(":id")));
+//       Stylist restaurant = Stylist.find(Integer.parseInt(request.params(":id")));
 //       restaurant.delete();
 //       model.put("template", "templates/index.vtl");
-//       model.put("restaurants", Restaurant.all());
+//       model.put("restaurants", Stylist.all());
 //       return new ModelAndView(model, layout);
 //     }, new VelocityTemplateEngine());
 //
 //     post("restaurant/:id", (request, response) -> {
 //       Map<String, Object> model = new HashMap<String, Object>();
-//       Restaurant restaurant = Restaurant.find(Integer.parseInt(request.params(":id")));
+//       Stylist restaurant = Stylist.find(Integer.parseInt(request.params(":id")));
 //       model.put("restaurant", restaurant);
 //       String paragraph = request.queryParams("paragraph");
 //       String pictureUrl = request.queryParams("pictureUrl");

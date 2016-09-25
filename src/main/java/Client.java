@@ -7,13 +7,13 @@ public class Client {
   private String name;
   private int age;
   private String haircut;
-  private int salonId;
+  private int stylistId;
 
-  public Client(String name, int age, String haircut) {
+  public Client(String name, int age, String haircut, int stylistId) {
     this.name = name;
     this.age = age;
     this.haircut = haircut;
-    this.salonId = salonId;
+    this.stylistId = stylistId;
   }
 
   public int getId() {
@@ -28,8 +28,8 @@ public class Client {
   public String getHaircut() {
     return haircut;
   }
-  public int getSalonId() {
-    return salonId;
+  public int getStylistId() {
+    return stylistId;
   }
 
   @Override
@@ -41,17 +41,18 @@ public class Client {
       return this.getName().equals(newClient.getName()) &&
       this.getAge()==(newClient.getAge()) &&
       this.getHaircut().equals(newClient.getHaircut()) &&
-      this.getId() == newClient.getId();
+      this.getStylistId() == newClient.getStylistId();
     }
   }
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO clients(name, age, haircut) VALUES (:name, :age, :haircut)";
+      String sql = "INSERT INTO clients(name, age, haircut, stylistid) VALUES (:name, :age, :haircut, :stylistid)";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
       .addParameter("age", this.age)
       .addParameter("haircut", this.haircut)
+      .addParameter("stylistId", this.stylistId)
       .executeUpdate()
       .getKey();
     }
@@ -76,7 +77,7 @@ public class Client {
 
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM clients WHERE StylistId = :id;";
+      String sql = "DELETE FROM clients WHERE stylistId = :id;";
       con.createQuery(sql)
       .addParameter("id", id)
       .executeUpdate();
