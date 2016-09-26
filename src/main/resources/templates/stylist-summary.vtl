@@ -1,5 +1,6 @@
 <div id="clientListJumbotron" class= "jumbotron">
-  <h1 id="reviewTitle">$stylist.getName() Clients:</h1>
+  <h1>$stylist.getName()</h1>
+  <p> Our Stylist $stylist.getName() is $stylist.getAge() years old, his specialty is $stylist.getSpecialty() and he has been a stylist for $stylist.getExperience() years!!
   <div class="row">
     <div class="col-md-4">
       <form action="$stylist.getId()/delete" method="post">
@@ -12,17 +13,17 @@
       </form>
     </div>
     <div class="col-md-4">
-      <a href = "/"> <button type="submit" class = "btn btn-warning">Go Back to Home</button></a>
+      <a href = "/"><button type="submit" class = "btn btn-warning">Go Back to Home</button></a>
     </div>
   </div>
+
+  <p> list of $stylist.getName() Clients:
+
+  #foreach ($client in $clients)
+    <div>
+      <h3>$client.getName()</h3>
+      <h3>$client.getAge()</h3>
+      <h3>$client.getHaircut()</h3>
+    </div>
+  #end
 </div>
-
-<h1>Thanks for exploring my page</h1>
-
-#foreach ($client in $clients)
-  <div>
-    <h3 class="reviewrating">$review.getRating()</h3>
-    <h3 class = "reviewparagraph">$review.getParagraph()</h3>
-    <h3 class = "reviewparagraph">$review.getParagraph()</h3>
-  </div>
-#end

@@ -41,13 +41,14 @@ public class Client {
       return this.getName().equals(newClient.getName()) &&
       this.getAge()==(newClient.getAge()) &&
       this.getHaircut().equals(newClient.getHaircut()) &&
-      this.getStylistId() == newClient.getStylistId();
+      this.getStylistId() == (newClient.getStylistId()) &&
+      this.getId() == (newClient.getId());
     }
   }
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO clients(name, age, haircut, stylistid) VALUES (:name, :age, :haircut, :stylistid)";
+      String sql = "INSERT INTO clients (name, age, haircut, stylistId) VALUES (:name, :age, :haircut, :stylistId)";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
       .addParameter("age", this.age)
