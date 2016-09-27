@@ -14,7 +14,7 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("stylist", Stylist.all());
+      model.put("stylists", Stylist.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -65,7 +65,7 @@ public class App {
       int stylistId =  stylist.getId();
       Client client = new Client(name, age, haircut, stylistId);
       client.save();
-      model.put("client", stylist.getClients());
+      model.put("clients", stylist.getClients());
       model.put("template", "templates/stylist-summary.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
