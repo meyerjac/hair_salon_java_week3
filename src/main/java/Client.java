@@ -84,4 +84,20 @@ public class Client {
       .executeUpdate();
     }
   }
+  public void update(String name, int age, String haircut, int stylistId) {
+    try (Connection con = DB.sql2o.open()) {
+      this.name = name;
+      this.age = age;
+      this.haircut = haircut;
+      this.stylistId = stylistId;
+      String sql = "UPDATE clients SET name = :name, age = :age, haircut = :haircut, stylistId = :stylistId WHERE stylistId = :id";
+      con.createQuery(sql)
+      .addParameter("age", this.age)
+      .addParameter("name", this.name)
+      .addParameter("haircut", this.haircut)
+      .addParameter("stylistId", this.stylistId)
+      .addParameter("id", stylistId)
+      .executeUpdate();
+    }
+  }
 }

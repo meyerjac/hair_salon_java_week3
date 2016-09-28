@@ -16,7 +16,6 @@ public class Stylist {
     this.specialty = specialty;
     this.experience = experience;
   }
-
   public int getId() {
     return id;
   }
@@ -32,7 +31,6 @@ public class Stylist {
   public int getExperience() {
     return experience;
   }
-
   @Override
   public boolean equals(Object myStylist) {
     if(!(myStylist instanceof Stylist)){
@@ -82,11 +80,26 @@ public class Stylist {
       .executeAndFetch(Client.class);
     }
   }
-
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM stylists WHERE id = :id;";
       con.createQuery(sql)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+  public void update(String name, int age, String specialty, int experience) {
+    try (Connection con = DB.sql2o.open()) {
+      this.name = name;
+      this.age = age;
+      this.specialty = specialty;
+      this.experience = experience;
+      String sql = "UPDATE stylists SET name = :name, age = :age, specialty = :specialty, experience = :experience WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("age", this.age)
+      .addParameter("name", this.name)
+      .addParameter("specialty", this.specialty)
+      .addParameter("experience", this.experience)
       .addParameter("id", id)
       .executeUpdate();
     }
