@@ -1,0 +1,27 @@
+<h1>Edit this Stylist</h1>
+
+<form action="/stylist/$stylist.getId()/edited" method="post">
+  <div class="form-group">
+    <label for="name">stylist Name</label>
+    <input id="name" name="name" type="text" value =$stylist.getName() required>
+  </div>
+
+  <div class="form-group">
+    <label for="age">Age of new Stylist</label>
+    <input id="age" name="age" type="text" value=$stylist.getAge() required><p>years old</p>
+  </div>
+
+
+  <div class="form-group">
+    <label for="specialty">What is your specialty as a stylist</label>
+    <input id="specialty" name="specialty" type="text" value=$stylist.getSpecialty() required>
+  </div>
+
+
+  <div class="form-group">
+    <label for="experience">years of experience as a stylist</label>
+    <input id="experience" name="experience" type="text" value=$stylist.getExperience() required>
+  </div>
+  <button type="submit" class="btn btn-success">submit update</button>
+</form>
+<a href = "/"><button type="submit" class = "btn btn-danger">Go Back to Home</button></a>
