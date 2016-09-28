@@ -11,11 +11,10 @@ _This application is an assignment for Epicodus in Portland, Oregon.  Its purpos
 ## Setup/Installation Requirements
 
 * _clone the project directory from my github: meyerjac/hair_salon_java_week3_
-* _setup the database hair_salon on your personal computer_
+* _CREATE the database name 'hair_salon' on your personal computer_
 * _once your set up that database the tables will exist, you just need to call them out of my file by running $ psql media < media.sql in the terminal, and hopefully you have already installed postgres_
  _then # \c hair_salon to connect to the database, then run \dt_
 * _then 'gradle run' my program and open your browser to your localhost and view the application_
-* _format_
 
 ## Specifications
 
@@ -26,12 +25,11 @@ _This application is an assignment for Epicodus in Portland, Oregon.  Its purpos
 * _be able to assign multiple clients to multiple stylists_
 * _be able to delete a client from a stylist_
 * _be able to delete a stylist (and existing clients) from database_
-* _if a client is already in the system, they wont be allowed to be entered under two clients_
 
 
 ## Known Bugs
 
-_this project is still in development_
+_no bugs yet_
 
 ## Support and contact details
 
