@@ -16,14 +16,14 @@
       <a href = "/"><button type="submit" class = "btn btn-warning">Go Back to Home</button></a>
     </div>
   </div>
-
-  <p> list of $stylist.getName() Clients:
-
+  <br>
+  <br>
+  <p> list of $stylist.getName()'s Clients:
   #foreach ($client in $clients)
     <div>
-      <h3>$client.getName()</h3>
-      <h3>$client.getAge()</h3>
-      <h3>$client.getHaircut()</h3>
+      <ul>
+        <li><a href="/stylist/$stylist.getId()/client">$client.getName()</a></li>
+      </ul>
     </div>
   #end
 </div>
