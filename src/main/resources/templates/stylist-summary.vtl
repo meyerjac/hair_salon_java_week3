@@ -1,6 +1,6 @@
 <div id="clientListJumbotron" class= "jumbotron">
   <h1>$stylist.getName()</h1>
-  <p> Our Stylist $stylist.getName() is $stylist.getAge() years old, his specialty is $stylist.getSpecialty() and he has been a stylist for $stylist.getExperience() years!!
+  <p> Our Stylist $stylist.getName() is $stylist.getAge() years old, their specialty is $stylist.getSpecialty() and they have been a stylist for $stylist.getExperience() years!!
   <div class="row">
     <div class="col-md-4">
       <form action="$stylist.getId()/delete" method="post">
@@ -22,7 +22,7 @@
   #foreach ($client in $clients)
     <div>
       <ul>
-        <li><a href="/stylist/$stylist.getId()/client">$client.getName()</a></li>
+        <li><a href="/stylist/$stylist.getId()/client/$client.getId()">$client.getName()</a></li>
       </ul>
     </div>
   #end

@@ -67,7 +67,7 @@ public class Client {
   }
 
   public static Client find(int id) {
-    String sql = "SELECT * FROM Clients where id=:id";
+    String sql = "SELECT * FROM clients where id=:id";
     try(Connection con = DB.sql2o.open()) {
       Client newClient = con.createQuery(sql)
       .addParameter("id", id)
@@ -78,7 +78,7 @@ public class Client {
 
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM clients WHERE stylistId = :id;";
+      String sql = "DELETE FROM clients WHERE id = :id;";
       con.createQuery(sql)
       .addParameter("id", id)
       .executeUpdate();

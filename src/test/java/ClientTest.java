@@ -73,4 +73,12 @@ public class ClientTest {
     myClientTwo.save();
     assertEquals(Client.find(myClientTwo.getId()), myClientTwo);
   }
+  @Test
+  public void delete_deletesTheClient_true() {
+  Client testClient = new Client("bobby", 56, "crew", 1);
+  testClient.save();
+  int id = testClient.getId();
+  testClient.delete();
+  assertEquals(null, Client.find(id));
+}
 }
