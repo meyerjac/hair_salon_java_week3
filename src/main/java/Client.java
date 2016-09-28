@@ -90,13 +90,13 @@ public class Client {
       this.age = age;
       this.haircut = haircut;
       this.stylistId = stylistId;
-      String sql = "UPDATE clients SET name = :name, age = :age, haircut = :haircut, stylistId = :stylistId WHERE stylistId = :id";
+      String sql = "UPDATE clients SET name = :name, age = :age, haircut = :haircut, stylistId = :stylistId WHERE id = :id";
       con.createQuery(sql)
       .addParameter("age", this.age)
       .addParameter("name", this.name)
       .addParameter("haircut", this.haircut)
       .addParameter("stylistId", this.stylistId)
-      .addParameter("id", stylistId)
+      .addParameter("id", id)
       .executeUpdate();
     }
   }

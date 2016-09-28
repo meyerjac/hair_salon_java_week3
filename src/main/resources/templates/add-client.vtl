@@ -1,22 +1,20 @@
-<h1>Clients for $stylist.getName()</h1>
-
-<form action="/stylist/$stylist.getId()" method="post">
-  <div class="form-group">
-    <label for="name">Please write your name:</label>
-    <input id="name" name="name" type="text" required>
-  </div>
-
-  <div class="form-group">
-    <label for="age">Please enter your age</label>
-    <input id="age" name="age" type="text">
-  </div>
-
-  <div class="form-group">
-    <label for="haircut">Please enter your normal haircut description</label>
-    <input id="haircut" name="haircut" type="text">
-  </div>
-
-  <button type="submit" class="btn btn-success">Add Client</button>
-</form>
-<br>
-<a href = "/"><button type= "submit" class = "btn btn-danger">go Back to home</button></a>
+<div class = "jumbotron">
+  <h1>Clients for $stylist.getName()</h1>
+  <form action="/stylist/$stylist.getId()" method="post">
+    <div class="form-group">
+      <label for="name">Please write your name:</label>
+      <input id="name" name="name" type="text" required>
+    </div>
+    <div class="form-group">
+      <label for="age">Please enter your age</label>
+      <input id="age" name="age" type="text">
+    </div>
+    <div class="form-group">
+      <label for="haircut">Please enter your normal haircut description</label>
+      <input id="haircut" name="haircut" type="text">
+    </div>
+    <button type="submit" class="btn btn-success">Add Client</button>
+  </form>
+  <br>
+  <a href = "/"><button type= "submit" class = "btn btn-danger">go Back to home</button></a>
+</div>
